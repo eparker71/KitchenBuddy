@@ -3,3 +3,8 @@ DerivedData/
 .DS_Store
 xcuserdata/
 *.xcworkspace
+.Trashes
+*.swp
+*.lock
+*~.nib
+
