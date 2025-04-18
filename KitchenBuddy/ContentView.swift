@@ -65,26 +65,31 @@ struct ContentView: View {
         VStack {
             
             HStack {
-                Text("Amount")
+                Text("Convert")
                 TextField("Amount", value: $amount, formatter: NumberFormatter())
-                    //.padding()
+                    .frame(width: 120)
+                    .textFieldStyle(.roundedBorder)
+                    .background(Color.black)
+                    .foregroundColor(Color.black)
+                    .cornerRadius(8)
             }
             .padding()
 
-            Picker("From Unit", selection: $fromUnit) {
-                ForEach(units, id: \.self) { unit in
-                    Text(unit)
+            HStack {
+                Picker("From Unit", selection: $fromUnit) {
+                    ForEach(units, id: \.self) { unit in
+                        Text(unit)
+                    }
                 }
-            }
-            .padding()
-
-            Picker("To Unit", selection: $toUnit) {
-                ForEach(units, id: \.self) { unit in
-                    Text(unit)
+                //.padding()
+                Text("to")
+                Picker("To Unit", selection: $toUnit) {
+                    ForEach(units, id: \.self) { unit in
+                        Text(unit)
+                    }
                 }
+                //.padding()
             }
-            .padding()
-
             Button("Convert") {
                 convert()
             }
@@ -95,8 +100,12 @@ struct ContentView: View {
 
             Text(result)
                 .padding()
+                
         }
-        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+            .stroke(Color.blue, lineWidth: 4)
+        )
     }
 }
 
